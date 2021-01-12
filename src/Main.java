@@ -4,11 +4,11 @@ public class Main {
 	// write your code here
 
         //fetch from DB
-        modelStaff model = retrieveStaffFromDatebase();
+        modelStaff model = retrieveStaffFromDatabase();
         //--
 
         //create a view: write details down
-        viewStaff view = new viewStaff();
+        viewStaff view = new viewStaff("Staff View");
         controllerStaff controller = new controllerStaff(model, view);
         controller.updateView();
         //--
@@ -17,9 +17,10 @@ public class Main {
         controller.setStaffName("Nathan");
         controller.updateView();
         //--
+
     }
 
-    private static modelStaff retrieveStaffFromDatebase(){
+    private static modelStaff retrieveStaffFromDatabase(){
         modelStaff staff = new modelStaff();
         staff.setName("Nathan");
 
