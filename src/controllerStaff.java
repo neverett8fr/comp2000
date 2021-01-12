@@ -10,24 +10,25 @@ public class controllerStaff {
     }
 
     public void initView(){
-
+        view.getLBLName().setText(model.getStaffName());
     }
     public void initController(){
+        //add action listeners here
 
     }
 
     public void setStaffName(String name){
-        model.setName(name);
+        model.setStaffName(name);
         JOptionPane.showMessageDialog(null, "Done"
                 , "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public String getStaffName(){
-        return  model.getName();
+        return  model.getStaffName();
     }
 
     public void updateView(){
-        view.printStaffDetails(model.getName());
+        view.printStaffDetails(model.getStaffName());
     }
 
 }
