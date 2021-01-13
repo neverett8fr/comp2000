@@ -1,3 +1,6 @@
+import java.awt.event.ActionListener;
+import java.util.EventListener;
+
 public class modelStaff {
     private int staffID;
     private String staffName;
@@ -30,6 +33,19 @@ public class modelStaff {
     public void setStaffPasswordHash(String staffPasswordHash){
         this.staffPasswordHash = staffPasswordHash;
     }
+
+    public modelStaff(int staffID, String staffName,
+                      String staffUsername,
+                      String staffPasswordHash)
+    {
+        this.staffID = staffID;
+        this.staffName = staffName;
+        this.staffUsername = staffUsername;
+        this.staffPasswordHash = staffPasswordHash;
+
+
+    }
+
 
 
     //method to return hash

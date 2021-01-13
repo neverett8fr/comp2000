@@ -10,6 +10,9 @@ public class viewLogin {
     private JTextField TXTUsername;
     private JTextField TXTPassword;
 
+    private JPanel panelOne;
+    private JPanel panelTwo;
+
     public JFrame getFrame(){
         return frame;
     }
@@ -40,11 +43,19 @@ public class viewLogin {
         TXTUsername = new JTextField("Enter Username");
         TXTPassword = new JTextField("Enter Password");
 
+        panelOne = new JPanel();
+        panelTwo = new JPanel();
+
+
         //add UI to frame
-        frame.getContentPane().add(LBLUsername, BorderLayout.PAGE_START);
-        frame.getContentPane().add(TXTUsername, BorderLayout.LINE_START);
-        frame.getContentPane().add(LBLPassword, BorderLayout.CENTER);
-        frame.getContentPane().add(TXTPassword, BorderLayout.LINE_END);
+        panelOne.add(LBLUsername, BorderLayout.PAGE_START);
+        panelOne.add(TXTUsername, BorderLayout.LINE_START);
+        frame.getContentPane().add(panelOne, BorderLayout.WEST);
+
+        panelTwo.add(LBLPassword, BorderLayout.PAGE_START);
+        panelTwo.add(TXTPassword, BorderLayout.LINE_START);
+        frame.getContentPane().add(panelTwo, BorderLayout.EAST);
+
         frame.getContentPane().add(BTNSubmit, BorderLayout.PAGE_END);
 
         BTNSubmit.addActionListener(e -> frame.dispose());
