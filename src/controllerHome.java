@@ -1,6 +1,10 @@
 import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
+import java.nio.*;
+
 public class controllerHome {
     private viewHome view;
 
@@ -12,57 +16,35 @@ public class controllerHome {
     }
 
 
-    public modelStaff[] loadModelStaffCSV(String address){
-
-        modelStaff[] outputArray = new modelStaff[0];
-        int whileCount = 0;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(address))) {
-            String row;
-            BufferedReader csvReader = new BufferedReader(new FileReader(address));
-            csvReader.readLine(); //skips headers (first line)
-            while ((row = csvReader.readLine()) != null) {
-
-                String[] data = row.split(",");
-                // do something with the data
-                int staffID = Integer.parseInt(data[0]);
-                String staffName = data[1];
-                String staffUsername = data[2];
-                String staffPasswordHash = data[3];
-
-                modelStaff constructor = new modelStaff(staffID,
-                        staffName, staffUsername, staffPasswordHash);
-
-
-                //below resizes array and adds newly created model in;
-                modelStaff[] b = new modelStaff[outputArray.length + 1];
-                for (int i=0; i < outputArray.length; ++i) {
-                    b[i] = outputArray[i];
-                }
-                outputArray = b;
-
-                outputArray[outputArray.length - 1] = constructor;
-
-            }
-            csvReader.close();
-        }
-        catch (Exception e) {
-            System.out.println("error");
-        }
-
-        return outputArray;
-    }
 
     public void initController(){
         //button listeners
-        view.getBTNStaff().addActionListener(e -> openLogin());
+        view.getBTNStaff().addActionListener(e -> openLogin("modelStaff.csv"));
         view.getBTNCustomer().addActionListener(e -> openCustomerView());
 
     }
-    private void openLogin(){
+    private void openLogin(String address){
         //viewStaff staffView = new viewStaff();
 
-        modelStaff[] staffModel = loadModelStaffCSV("modelStaff.csv");
+
+        //modelStaff[] staffModel = loadModelStaffCSV("modelStaff.csv");
+
+        int linesNumber = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(address))) {
+            while (reader.readLine() != null) linesNumber++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        linesNumber -=1; //-1 to remove header
+
+        modelStaff[] staffModel = new modelStaff[linesNumber];
+        for (int i = 0; i <= linesNumber - 1; i++)
+        {
+            staffModel[i] = new modelStaff();
+            staffModel[i].loadStaffCSV(address, i);
+
+
+        }
 
         viewLogin loginView = new viewLogin();
         controllerLogin loginController = new controllerLogin(staffModel, loginView);

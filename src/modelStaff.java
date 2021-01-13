@@ -1,4 +1,6 @@
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.EventListener;
 
 public class modelStaff {
@@ -34,6 +36,10 @@ public class modelStaff {
         this.staffPasswordHash = staffPasswordHash;
     }
 
+    public modelStaff(){
+
+    }
+
     public modelStaff(int staffID, String staffName,
                       String staffUsername,
                       String staffPasswordHash)
@@ -48,7 +54,54 @@ public class modelStaff {
 
 
 
-    //method to return hash
+    //method to load in data from csv
+    public void loadStaffCSV(String address, int position)
+    {
+
+        int whileCount = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(address))) {
+            String row;
+            BufferedReader csvReader = new BufferedReader(new FileReader(address));
+            csvReader.readLine(); //skips headers (first line)
+            while ((row = csvReader.readLine()) != null) {
+
+                String[] data = row.split(",");
+                // do something with the data
+                int staffID = Integer.parseInt(data[0]);
+                String staffName = data[1];
+                String staffUsername = data[2];
+                String staffPasswordHash = data[3];
+
+
+                modelStaff constructor = new modelStaff(staffID,
+                        staffName, staffUsername, staffPasswordHash);
+
+                if (whileCount == position){
+                    this.staffID = staffID;
+                    this.staffName = staffName;
+                    this.staffUsername = staffUsername;
+                    this.staffPasswordHash = staffPasswordHash;
+                }
+                whileCount +=1;
+
+
+                //below resizes array and adds newly created model in;
+                //modelStaff[] b = new modelStaff[outputArray.length + 1];
+                //for (int i=0; i < outputArray.length; ++i) {
+                //    b[i] = outputArray[i];
+                //}
+                //outputArray = b;
+
+                //outputArray[outputArray.length - 1] = constructor;
+
+            }
+            csvReader.close();
+        }
+        catch (Exception e) {
+            System.out.println("error");
+        }
+
+    }
 
 
 }
