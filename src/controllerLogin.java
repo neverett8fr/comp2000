@@ -25,14 +25,10 @@ public class controllerLogin {
         passHashInput = view.getPassword(); //could hash it here -- thought it better to only give controller the hashed and not plaintext
 
         for (int i = 0; i < model.length ; i++) {
-
-
             if (usernameInput.equals(model[i].getStaffUsername()) &&
                     passHashInput.equals(model[i].getStaffPasswordHash())) //try login -- search for username in db & compare hashes
             {
-                //& passHashInput == model[i].getStaffPasswordHash()
-
-                openStaff(i);
+                openStaff(model, i);
                 break;
             }
         }
@@ -43,10 +39,10 @@ public class controllerLogin {
 
     }
 
-    private void openStaff(int staffPosition){
+    private void openStaff(modelStaff[] model, int staffPosition){
 
         viewStaff staffView = new viewStaff();
-        controllerStaff staffController = new controllerStaff(model[staffPosition], staffView);
+        controllerStaff staffController = new controllerStaff(model, staffPosition, staffView);
         //staffController.initView();
         //staffController.initController();
     }

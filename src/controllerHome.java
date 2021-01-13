@@ -36,14 +36,11 @@ public class controllerHome {
             e.printStackTrace();
         }
         linesNumber -=1; //-1 to remove header
-
         modelStaff[] staffModel = new modelStaff[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
             staffModel[i] = new modelStaff();
             staffModel[i].loadStaffCSV(address, i);
-
-
         }
 
         viewLogin loginView = new viewLogin();
