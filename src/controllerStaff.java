@@ -7,10 +7,11 @@ public class controllerStaff {
         this.model = model;
         this.view = view;
         initView();
+        initController();
     }
 
     public void initView(){
-        view.getLBLName().setText(model.getStaffName());
+        view.getLBLStaffName().setText(model.getStaffName());
     }
     public void initController(){
         //add action listeners here
@@ -28,7 +29,8 @@ public class controllerStaff {
     }
 
     public void updateView(){
-        view.printStaffDetails(model.getStaffName());
+
+        //view.printStaffDetails(model.getStaffName());
     }
 
 }

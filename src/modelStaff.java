@@ -2,7 +2,9 @@ public class modelStaff {
     private int staffID;
     private String staffName;
     private String staffUsername;
-    private int staffPasswordHash;
+    private String staffPasswordHash;
+
+    //parse in hash, check locally with subroutine then allow change
 
     public int getStaffID(){
         return staffID;
@@ -22,11 +24,15 @@ public class modelStaff {
     public void setStaffUsername(String staffUsername){
         this.staffUsername = staffUsername;
     }
-    public int getStaffPasswordHash(){
+    public String getStaffPasswordHash(){
         return staffPasswordHash;
     }
-    public void setStaffPasswordHash(int staffPasswordHash){
+    public void setStaffPasswordHash(String staffPasswordHash){
         this.staffPasswordHash = staffPasswordHash;
     }
+
+
+    //method to return hash
+
 
 }
