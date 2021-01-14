@@ -43,7 +43,6 @@ public class controllerLogin {
     private void openStaff(modelStaff[] model, int staffPosition){
 
         viewStaff staffView = new viewStaff();
-        controllerStaff staffController = new controllerStaff(model, staffPosition, staffView);
 
         String address = "modelItems.csv";
         int linesNumber = 0;
@@ -59,7 +58,7 @@ public class controllerLogin {
             itemsModel[i] = new modelItems();
             itemsModel[i].loadModelCSV(address, i);
         }
-        controllerItems itemsController = new controllerItems(itemsModel, staffView);
+        controllerStaff staffController = new controllerStaff(model, staffPosition, staffView,itemsModel);
 
 
         String addressReceipt = "modelReceipt.csv";

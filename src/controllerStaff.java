@@ -6,7 +6,11 @@ public class controllerStaff {
     private viewStaff view;
     private modelStaff[] modelStaffCollection;
 
-    public controllerStaff(modelStaff[] modelStaffCollection, int staffPosition, viewStaff view){
+    private modelItems[] modelItemsCollection;
+
+    public controllerStaff(modelStaff[] modelStaffCollection, int staffPosition, viewStaff view,
+                           modelItems[] modelItemsCollection){
+        this.modelItemsCollection = modelItemsCollection;
         this.staffPosition = staffPosition;
         this.view = view;
         this.modelStaffCollection = modelStaffCollection;
@@ -28,6 +32,20 @@ public class controllerStaff {
             view.getTXTStaffInfo().append("\n");
             view.getTXTStaffInfo().append("Staff Username: "+ modelStaffCollection[i].getStaffUsername());
             view.getTXTStaffInfo().append("\n");
+        }
+
+        view.getTXTItemInfo().setFont(new Font("New Times Roman", Font.BOLD, 20));
+        view.getTXTItemInfo().append("\n");
+        for (int i = 0; i <= modelItemsCollection.length - 1; i++) {
+            view.getTXTItemInfo().append("\n");
+            view.getTXTItemInfo().append("Item ID: " + String.valueOf(modelItemsCollection[i].getItemID()));
+            view.getTXTItemInfo().append("\n");
+            view.getTXTItemInfo().append("Item Name: " + modelItemsCollection[i].getItemName());
+            view.getTXTItemInfo().append("\n");
+            view.getTXTItemInfo().append("Item Price: "+ modelItemsCollection[i].getItemPrice());
+            view.getTXTItemInfo().append("\n");
+            view.getTXTItemInfo().append("Item Quantity: "+ modelItemsCollection[i].getQuantityStock());
+            view.getTXTItemInfo().append("\n");
         }
 
     }
