@@ -26,8 +26,6 @@ public class controllerItems {
             view.getTXTItemInfo().append("\n");
         }
 
-
-        view.getTXTItemInfo().setFont(new Font("New Times Roman", Font.BOLD, 20));
     }
     public void initController(){
         //add action listeners here

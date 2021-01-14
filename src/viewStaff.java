@@ -13,6 +13,7 @@ public class viewStaff {
     private JButton BTNRemoveStaff;
     private JButton BTNAddStock;
     private JButton BTNAddNewItem;
+    private JTextArea TXTReceiptInfo;
 
     private JPanel panelOne;
     private JPanel panelTwo;
@@ -32,6 +33,7 @@ public class viewStaff {
         LBLStaffID = new JLabel("Staff ID: ");
         TXTStaffInfo = new JTextArea("Staff Info: ");
         TXTItemInfo = new JTextArea("Item Info: ");
+        TXTReceiptInfo = new JTextArea("Receipt Info: ");
         BTNAddStaff = new JButton("Add Staff");
         BTNRemoveStaff = new JButton("Remove Staff");
         BTNAddStock = new JButton("Add Stock");
@@ -48,18 +50,18 @@ public class viewStaff {
         panelOne.add(LBLStaffName);
         panelOne.add(LBLStaffID);
 
-        panelTwo.add(TXTStaffInfo, BorderLayout.WEST);
-        panelTwo.add(BTNAddStaff);
-        panelTwo.add(BTNRemoveStaff);
+        panelTwo.add(TXTStaffInfo);
+        panelTwo.add(TXTReceiptInfo);
+        panelTwo.add(TXTItemInfo);
 
-
+        panelThree.add(BTNAddStaff);
+        panelThree.add(BTNRemoveStaff);
         panelThree.add(BTNAddStock);
         panelThree.add(BTNAddNewItem);
-        panelThree.add(TXTItemInfo, BorderLayout.EAST);
 
         frame.getContentPane().add(BorderLayout.PAGE_START, panelOne);
-        frame.getContentPane().add(BorderLayout.LINE_START, panelTwo);
-        frame.getContentPane().add(BorderLayout.LINE_END, panelThree);
+        frame.getContentPane().add(BorderLayout.CENTER, panelTwo);
+        frame.getContentPane().add(BorderLayout.PAGE_END, panelThree);
 
 
     }
@@ -71,6 +73,7 @@ public class viewStaff {
     public JLabel getLBLStaffName(){return LBLStaffName;}
     public JTextArea getTXTStaffInfo(){return TXTStaffInfo;}
     public JTextArea getTXTItemInfo(){return TXTItemInfo;}
+    public JTextArea getTXTReceiptInfo(){return TXTReceiptInfo;}
 
     public JButton getBTNAddStaff(){return BTNAddStaff;};
     public JButton getBTNRemoveStaff(){return BTNRemoveStaff;};

@@ -30,9 +30,7 @@ public class controllerStaff {
             view.getTXTStaffInfo().append("\n");
         }
 
-
-        view.getTXTItemInfo().setFont(new Font("New Times Roman", Font.BOLD, 20));
-        }
+    }
     public void initController(){
         //add action listeners here
         view.getBTNAddStaff().addActionListener(e -> addStaff("modelStaff.csv"));

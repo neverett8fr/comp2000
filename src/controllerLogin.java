@@ -38,9 +38,6 @@ public class controllerLogin {
         }
 
 
-        //System.out.println(usernameInput);
-        //System.out.println(passHashInput);
-
     }
 
     private void openStaff(modelStaff[] model, int staffPosition){
@@ -64,6 +61,38 @@ public class controllerLogin {
         }
         controllerItems itemsController = new controllerItems(itemsModel, staffView);
 
+
+        String addressReceipt = "modelReceipt.csv";
+        int linesNumberReceipt = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(addressReceipt))) {
+            while (reader.readLine() != null) linesNumberReceipt++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        linesNumberReceipt -=1;
+        modelReceipt[] receiptModel = new modelReceipt[linesNumberReceipt];
+        for (int i = 0; i <= linesNumberReceipt - 1; i++)
+        {
+            receiptModel[i] = new modelReceipt();
+            receiptModel[i].loadModelCSV(addressReceipt, i);
+        }
+
+        String addressReceiptItems = "modelReceiptItems.csv";
+        int linesNumberReceiptItems = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(addressReceiptItems))) {
+            while (reader.readLine() != null) linesNumberReceiptItems++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        linesNumberReceiptItems -=1;
+        modelReceiptItems[] receiptItemsModel = new modelReceiptItems[linesNumberReceiptItems];
+        for (int i = 0; i <= linesNumberReceiptItems - 1; i++)
+        {
+            receiptItemsModel[i] = new modelReceiptItems();
+            receiptItemsModel[i].loadModelCSV(addressReceiptItems, i);
+        }
+
+        controllerReceipt receiptController = new controllerReceipt(receiptModel, receiptItemsModel, staffView, itemsModel);
 
 
 
