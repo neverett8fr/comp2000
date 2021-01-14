@@ -1,5 +1,6 @@
 ### comp2000 
-##Kiosk Project
+## Kiosk Project
+*produce a Java standalone software application*
 
 ## Navigation
 When the application is opened you will start at the homescreen, where you can choose whether you want to access staf or customer view
