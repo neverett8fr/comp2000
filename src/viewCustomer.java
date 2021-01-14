@@ -9,6 +9,7 @@ public class viewCustomer {
     private JButton BTNAddItem;
     private JButton BTNStartAgain;
     private JButton BTNCheckout;
+    private JLabel LBLRunningTotal;
 
     public viewCustomer(){
         frame = new JFrame("Customer View");
@@ -20,10 +21,11 @@ public class viewCustomer {
 
         //UI elements
         panel = new JPanel();
-        TXTItemsAdded = new JTextArea("Items");
+        TXTItemsAdded = new JTextArea("Items:");
         BTNAddItem = new JButton("Add Item");
         BTNStartAgain = new JButton("Start Again");
         BTNCheckout = new JButton("Checkout");
+        LBLRunningTotal = new JLabel("Total: ");
 
 
         //add UI element to frame
@@ -34,6 +36,7 @@ public class viewCustomer {
         panel.add(BTNCheckout, BorderLayout.SOUTH);
 
         frame.getContentPane().add(BorderLayout.CENTER, TXTItemsAdded);
+        frame.getContentPane().add(BorderLayout.PAGE_END, LBLRunningTotal);
         frame.getContentPane().add(BorderLayout.LINE_END, panel);
 
     }
@@ -45,4 +48,5 @@ public class viewCustomer {
     public JButton getBTNAddItem(){return BTNAddItem;}
     public JButton getBTNStartAgain(){return BTNStartAgain;}
     public JButton getBTNCheckout(){return BTNCheckout;}
+    public JLabel getLBLRunningTotal(){return LBLRunningTotal;}
 }

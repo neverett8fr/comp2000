@@ -1,5 +1,5 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
 public class modelReceiptItems {
     private int receiptItemID;
@@ -26,6 +26,13 @@ public class modelReceiptItems {
 
     public void setModelCSV(String address)
     {
+        try{
+            FileWriter writer = new FileWriter(address, true);
+            writer.write(receiptItemID + "," +receiptID +","+itemID+"\n");
+            writer.close();
+        }
+        catch (Exception e){}
+
 
     }
 
@@ -36,7 +43,7 @@ public class modelReceiptItems {
         try (BufferedReader br = new BufferedReader(new FileReader(address))) {
             String row;
             BufferedReader csvReader = new BufferedReader(new FileReader(address));
-            csvReader.readLine(); //skips headers (first line)
+            //csvReader.readLine(); //skips headers (first line)
             while ((row = csvReader.readLine()) != null) {
 
                 String[] data = row.split(",");
