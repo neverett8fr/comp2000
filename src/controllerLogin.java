@@ -39,18 +39,22 @@ public class controllerLogin {
 
 
     }
-
-    private void openStaff(modelStaff[] model, int staffPosition){
-
-        viewStaff staffView = new viewStaff();
-
-        String address = "modelItems.csv";
+    private int returnCSVLineCount(String address){
         int linesNumber = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(address))) {
             while (reader.readLine() != null) linesNumber++;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return linesNumber;
+    }
+
+    private void openStaff(modelStaff[] model, int staffPosition){
+
+        viewStaff staffView = new viewStaff();
+
+        String address = "modelItems.csv";
+        int linesNumber = returnCSVLineCount(address);
         linesNumber -=1; //-1 to remove header
         modelItems[] itemsModel = new modelItems[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
@@ -61,34 +65,24 @@ public class controllerLogin {
         controllerStaff staffController = new controllerStaff(model, staffPosition, staffView,itemsModel);
 
 
-        String addressReceipt = "modelReceipt.csv";
-        int linesNumberReceipt = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(addressReceipt))) {
-            while (reader.readLine() != null) linesNumberReceipt++;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        linesNumberReceipt -=1;
-        modelReceipt[] receiptModel = new modelReceipt[linesNumberReceipt];
-        for (int i = 0; i <= linesNumberReceipt - 1; i++)
+        address = "modelReceipt.csv";
+        linesNumber = returnCSVLineCount(address);
+        linesNumber -=1;
+        modelReceipt[] receiptModel = new modelReceipt[linesNumber];
+        for (int i = 0; i <= linesNumber - 1; i++)
         {
             receiptModel[i] = new modelReceipt();
-            receiptModel[i].loadModelCSV(addressReceipt, i);
+            receiptModel[i].loadModelCSV(address, i);
         }
 
-        String addressReceiptItems = "modelReceiptItems.csv";
-        int linesNumberReceiptItems = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(addressReceiptItems))) {
-            while (reader.readLine() != null) linesNumberReceiptItems++;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        linesNumberReceiptItems -=1;
-        modelReceiptItems[] receiptItemsModel = new modelReceiptItems[linesNumberReceiptItems];
-        for (int i = 0; i <= linesNumberReceiptItems - 1; i++)
+        address = "modelReceiptItems.csv";
+        linesNumber = returnCSVLineCount(address);
+        linesNumber -=1;
+        modelReceiptItems[] receiptItemsModel = new modelReceiptItems[linesNumber];
+        for (int i = 0; i <= linesNumber - 1; i++)
         {
             receiptItemsModel[i] = new modelReceiptItems();
-            receiptItemsModel[i].loadModelCSV(addressReceiptItems, i);
+            receiptItemsModel[i].loadModelCSV(address, i);
         }
 
         controllerReceipt receiptController = new controllerReceipt(receiptModel, receiptItemsModel, staffView, itemsModel);
