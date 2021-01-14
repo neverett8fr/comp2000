@@ -73,9 +73,6 @@ public class modelStaff {
                 String staffPasswordHash = data[3];
 
 
-                modelStaff constructor = new modelStaff(staffID,
-                        staffName, staffUsername, staffPasswordHash);
-
                 if (whileCount == position){
                     this.staffID = staffID;
                     this.staffName = staffName;

@@ -19,6 +19,7 @@ public class controllerStaff {
         view.getLBLStaffID().setText("Staff ID: "+String.valueOf(modelStaffCollection[staffPosition].getStaffID()));
 
         view.getTXTStaffInfo().setFont(new Font("New Times Roman", Font.BOLD, 20));
+        view.getTXTStaffInfo().append("\n");
         for (int i = 0; i <= modelStaffCollection.length - 1; i++) {
             view.getTXTStaffInfo().append("\n");
             view.getTXTStaffInfo().append("Staff ID: " + String.valueOf(modelStaffCollection[i].getStaffID()));
@@ -26,7 +27,7 @@ public class controllerStaff {
             view.getTXTStaffInfo().append("Staff Name: " + modelStaffCollection[i].getStaffName());
             view.getTXTStaffInfo().append("\n");
             view.getTXTStaffInfo().append("Staff Username: "+ modelStaffCollection[i].getStaffUsername());
-
+            view.getTXTStaffInfo().append("\n");
         }
 
 

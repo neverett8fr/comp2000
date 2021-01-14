@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class controllerLogin {
     private modelStaff[] model;
     private viewLogin view;
@@ -43,8 +47,26 @@ public class controllerLogin {
 
         viewStaff staffView = new viewStaff();
         controllerStaff staffController = new controllerStaff(model, staffPosition, staffView);
-        //staffController.initView();
-        //staffController.initController();
+
+        String address = "modelItems.csv";
+        int linesNumber = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(address))) {
+            while (reader.readLine() != null) linesNumber++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        linesNumber -=1; //-1 to remove header
+        modelItems[] itemsModel = new modelItems[linesNumber];
+        for (int i = 0; i <= linesNumber - 1; i++)
+        {
+            itemsModel[i] = new modelItems();
+            itemsModel[i].loadModelCSV(address, i);
+        }
+        controllerItems itemsController = new controllerItems(itemsModel, staffView);
+
+
+
+
     }
 
 }
