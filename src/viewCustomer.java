@@ -1,2 +1,48 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class viewCustomer {
+
+    private JFrame frame;
+    private JPanel panel;
+    private JTextArea TXTItemsAdded;
+    private JButton BTNAddItem;
+    private JButton BTNStartAgain;
+    private JButton BTNCheckout;
+
+    public viewCustomer(){
+        frame = new JFrame("Customer View");
+        frame.getContentPane().setLayout(new BorderLayout());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(1000,750);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        //UI elements
+        panel = new JPanel();
+        TXTItemsAdded = new JTextArea("Items");
+        BTNAddItem = new JButton("Add Item");
+        BTNStartAgain = new JButton("Start Again");
+        BTNCheckout = new JButton("Checkout");
+
+
+        //add UI element to frame
+        //create JPanel
+
+        panel.add(BTNAddItem, BorderLayout.NORTH);
+        panel.add(BTNStartAgain, BorderLayout.CENTER);
+        panel.add(BTNCheckout, BorderLayout.SOUTH);
+
+        frame.getContentPane().add(BorderLayout.CENTER, TXTItemsAdded);
+        frame.getContentPane().add(BorderLayout.LINE_END, panel);
+
+    }
+
+    public JFrame getFrame(){
+        return frame;
+    }
+    public JTextArea getTXTItemsAdded(){return TXTItemsAdded;}
+    public JButton getBTNAddItem(){return BTNAddItem;}
+    public JButton getBTNStartAgain(){return BTNStartAgain;}
+    public JButton getBTNCheckout(){return BTNCheckout;}
 }
