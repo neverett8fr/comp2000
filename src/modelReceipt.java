@@ -26,10 +26,16 @@ public class modelReceipt {
 
     public void setReceiptID(int receiptID) { this.receiptID = receiptID; }
     public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
-    public void setChangeGiven(float amountPaid) { this.amountPaid = amountPaid; }
+    public void setAmountPaid(float amountPaid) { this.amountPaid = amountPaid; }
     public void setTotalPrice(float totalPrice) { this.totalPrice = totalPrice; }
 
     public modelReceipt(){
+
+    }
+
+
+    public void setModelCSV(String address)
+    {
 
     }
 

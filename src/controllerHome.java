@@ -20,7 +20,7 @@ public class controllerHome {
     public void initController(){
         //button listeners
         view.getBTNStaff().addActionListener(e -> openLogin("modelStaff.csv"));
-        view.getBTNCustomer().addActionListener(e -> openCustomerView("modelItems.csv"));
+        view.getBTNCustomer().addActionListener(e -> openCustomerView("modelItems.csv", "modelReceipt.csv"));
 
     }
     private void openLogin(String address){
@@ -54,7 +54,7 @@ public class controllerHome {
 
 
 
-    private void openCustomerView(String address){
+    private void openCustomerView(String address, String addressReceipt){
 
         viewCustomer customerView = new viewCustomer();
 
@@ -71,8 +71,24 @@ public class controllerHome {
             itemsModel[i] = new modelItems();
             itemsModel[i].loadModelCSV(address, i);
         }
+
+
+        linesNumber = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(addressReceipt))) {
+            while (reader.readLine() != null) linesNumber++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        linesNumber -=1; //-1 to remove header
+        modelReceipt[] receiptModel = new modelReceipt[linesNumber];
+        for (int i = 0; i <= linesNumber - 1; i++)
+        {
+            receiptModel[i] = new modelReceipt();
+            receiptModel[i].loadModelCSV(addressReceipt, i);
+        }
+
         controllerCustomer customerController
-                = new controllerCustomer(itemsModel, customerView);
+                = new controllerCustomer(itemsModel, customerView, receiptModel);
 
     }
 

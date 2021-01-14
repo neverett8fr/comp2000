@@ -24,6 +24,12 @@ public class modelReceiptItems {
 
     }
 
+    public void setModelCSV(String address)
+    {
+
+    }
+
+
     public void loadModelCSV(String address, int position)
     {
         int whileCount = 0;

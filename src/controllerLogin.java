@@ -54,8 +54,7 @@ public class controllerLogin {
         viewStaff staffView = new viewStaff();
 
         String address = "modelItems.csv";
-        int linesNumber = returnCSVLineCount(address);
-        linesNumber -=1; //-1 to remove header
+        int linesNumber = returnCSVLineCount(address) - 1;//-1 to remove header
         modelItems[] itemsModel = new modelItems[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
@@ -66,8 +65,7 @@ public class controllerLogin {
 
 
         address = "modelReceipt.csv";
-        linesNumber = returnCSVLineCount(address);
-        linesNumber -=1;
+        linesNumber = returnCSVLineCount(address) - 1;
         modelReceipt[] receiptModel = new modelReceipt[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
@@ -76,8 +74,7 @@ public class controllerLogin {
         }
 
         address = "modelReceiptItems.csv";
-        linesNumber = returnCSVLineCount(address);
-        linesNumber -=1;
+        linesNumber = returnCSVLineCount(address) - 1;
         modelReceiptItems[] receiptItemsModel = new modelReceiptItems[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
