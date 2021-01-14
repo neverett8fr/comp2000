@@ -10,8 +10,6 @@ public class viewStaff {
     private JTextArea TXTStaffInfo;
     private JTextArea TXTItemInfo;
     private JButton BTNAddStaff;
-    private JButton BTNRemoveStaff;
-    private JButton BTNAddStock;
     private JButton BTNAddNewItem;
     private JTextArea TXTReceiptInfo;
 
@@ -35,8 +33,6 @@ public class viewStaff {
         TXTItemInfo = new JTextArea("Item Info: ");
         TXTReceiptInfo = new JTextArea("Receipt Info: ");
         BTNAddStaff = new JButton("Add Staff");
-        BTNRemoveStaff = new JButton("Remove Staff");
-        BTNAddStock = new JButton("Add Stock");
         BTNAddNewItem = new JButton("Add New Item");
 
         panelOne = new JPanel();
@@ -55,8 +51,6 @@ public class viewStaff {
         panelTwo.add(TXTItemInfo);
 
         panelThree.add(BTNAddStaff);
-        panelThree.add(BTNRemoveStaff);
-        panelThree.add(BTNAddStock);
         panelThree.add(BTNAddNewItem);
 
         frame.getContentPane().add(BorderLayout.PAGE_START, panelOne);
@@ -76,8 +70,6 @@ public class viewStaff {
     public JTextArea getTXTReceiptInfo(){return TXTReceiptInfo;}
 
     public JButton getBTNAddStaff(){return BTNAddStaff;};
-    public JButton getBTNRemoveStaff(){return BTNRemoveStaff;};
-    public JButton getBTNAddStock(){return BTNAddStock;};
     public JButton getBTNAddNewItem(){return BTNAddNewItem;};
 
 

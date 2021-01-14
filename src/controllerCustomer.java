@@ -36,8 +36,6 @@ public class controllerCustomer {
         //add action listeners here
         view.getBTNAddItem().addActionListener(e -> addItem());
         view.getBTNCheckout().addActionListener(e -> checkout());
-        view.getBTNStartAgain().addActionListener(e -> startAgain());
-
     }
     private void addItem()
     {
@@ -129,8 +127,6 @@ public class controllerCustomer {
 
         view.getLBLRunningTotal().setText("Total: £" + runningTotal);
 
-
-        //receiptModel
 
     }
     private void checkout()

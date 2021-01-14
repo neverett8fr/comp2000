@@ -1,9 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
-import java.nio.*;
 
 public class controllerHome {
     private viewHome view;
@@ -24,17 +19,13 @@ public class controllerHome {
 
     }
     private void openLogin(String address){
-        //viewStaff staffView = new viewStaff();
-
-
-        //modelStaff[] staffModel = loadModelStaffCSV("modelStaff.csv");
 
         int linesNumber = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(address))) {
             while (reader.readLine() != null) linesNumber++;
         } catch (IOException e) {
             e.printStackTrace();
-        } //-1 to remove header
+        }
         modelStaff[] staffModel = new modelStaff[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {

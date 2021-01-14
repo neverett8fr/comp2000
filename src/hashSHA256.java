@@ -1,5 +1,3 @@
-import javax.sound.sampled.AudioFormat;
-import java.awt.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

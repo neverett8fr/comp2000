@@ -1,10 +1,7 @@
 import java.awt.*;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 public class viewHome {
     //view uses swing framework to display UI to user
@@ -16,20 +13,8 @@ public class viewHome {
     public JFrame getFrame(){
         return frame;
     }
-    public void setFrame(JFrame frame){
-        this.frame = frame;
-    }
-    public JLabel getLBLTitle(){
-        return LBLTitle;
-    }
-    public void setLBLTitle(JLabel LBLName){
-        this.LBLTitle = LBLName;
-    }
     public JButton getBTNStaff(){ return BTNStaff; }
-    public void setBTNStaff(JButton BTNStaff){this.BTNStaff = BTNStaff;}
     public JButton getBTNCustomer(){ return BTNCustomer; }
-    public void setBTNCustomer(JButton BTNCustomer){this.BTNCustomer = BTNCustomer;}
-
 
     public viewHome(){
         frame = new JFrame("Home Menu");

@@ -40,10 +40,9 @@ public class modelReceiptItems {
     public void loadModelCSV(String address, int position)
     {
         int whileCount = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader(address))) {
+        try {
             String row;
             BufferedReader csvReader = new BufferedReader(new FileReader(address));
-            //csvReader.readLine(); //skips headers (first line)
             while ((row = csvReader.readLine()) != null) {
 
                 String[] data = row.split(",");
@@ -60,15 +59,6 @@ public class modelReceiptItems {
                 }
                 whileCount +=1;
 
-
-                //below resizes array and adds newly created model in;
-                //modelStaff[] b = new modelStaff[outputArray.length + 1];
-                //for (int i=0; i < outputArray.length; ++i) {
-                //    b[i] = outputArray[i];
-                //}
-                //outputArray = b;
-
-                //outputArray[outputArray.length - 1] = constructor;
 
             }
             csvReader.close();

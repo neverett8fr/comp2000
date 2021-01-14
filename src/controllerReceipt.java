@@ -2,7 +2,6 @@ import java.awt.*;
 
 public class controllerReceipt {
     private viewStaff staffView;
-    private viewCustomer checkoutView; //add in later
     private modelReceipt[] modelReceiptCollection;
     private modelReceiptItems[] modelReceiptItemsCollection;
     private modelItems[] itemsModelCollection;
@@ -15,19 +14,9 @@ public class controllerReceipt {
         initView(view);
         initController(view);
     }
-    public controllerReceipt(modelReceipt[] receiptModel, modelReceiptItems[] receiptItemsModel, viewCustomer view){
-        this.modelReceiptCollection = receiptModel;
-        this.modelReceiptItemsCollection = receiptItemsModel;
-        this.checkoutView = view;
-        initView(view);
-        initController(view);
-    }
 
-    public void initView(viewCustomer view){
-
-    }
     public void initView(viewStaff view){
-        view.getTXTReceiptInfo().setFont(new Font("New Times Roman", Font.BOLD, 20));
+        view.getTXTReceiptInfo().setFont(new Font("New Times Roman", Font.BOLD, 10));
         view.getTXTReceiptInfo().append("\n");
         for (int i = 0; i <= modelReceiptCollection.length - 1; i++) {
             view.getTXTReceiptInfo().append("\n");
