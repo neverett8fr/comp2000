@@ -48,7 +48,7 @@ public class modelReceipt {
     public void loadModelCSV(String address, int position)
     {
         int whileCount = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader(address))) {
+        try {
             String row;
             BufferedReader csvReader = new BufferedReader(new FileReader(address));
 
