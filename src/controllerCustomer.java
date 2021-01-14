@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileWriter;
 
 public class controllerCustomer {
     private viewCustomer view;
@@ -9,6 +10,7 @@ public class controllerCustomer {
     private modelReceiptItems[] receiptItemsModel; //ones to create
 
     private int newID;
+    private float runningTotal;
 
     private modelReceipt[] receiptModelCollection;
 
@@ -18,6 +20,7 @@ public class controllerCustomer {
         receiptModel = new modelReceipt();
         receiptItemsModel = new modelReceiptItems[0];
 
+        runningTotal = 0;
 
         this.receiptModelCollection = receiptModelCollection;
 
@@ -122,6 +125,10 @@ public class controllerCustomer {
         view.getTXTItemsAdded().append(itemName + " £" + itemPrice);
         view.getTXTItemsAdded().append("\n");
 
+        runningTotal += itemPrice;
+
+        view.getLBLRunningTotal().setText("Total: £" + runningTotal);
+
 
         //receiptModel
 
@@ -144,8 +151,26 @@ public class controllerCustomer {
         receiptModel.setAmountPaid(Float.parseFloat(JOptionPane.showInputDialog("Enter Amount Paid")));
         receiptModel.setPaymentMethod(JOptionPane.showInputDialog("Enter 'Cash' or 'Card''"));
 
-        //receiptModel.setModelCSV();
-        //receiptItemsModel();
+        receiptModel.setModelCSV("modelReceipt.csv");
+        for (int i = 0; i < receiptItemsModel.length; i++) {
+            receiptItemsModel[i].setModelCSV("modelReceiptItems.csv");
+
+            for (int j = 0; j < itemsModel.length; j++) {
+                if (itemsModel[j].getItemID() == receiptItemsModel[i].getItemID()){
+                    itemsModel[j].itemPurchase();
+                }
+            }
+        }
+
+        try{
+            FileWriter writer = new FileWriter("modelItems.csv", false);
+            writer.write("");
+            writer.close();
+        }
+        catch (Exception e){}
+        for (int i = 0; i < itemsModel.length; i++) {
+            itemsModel[i].setModelCSV("modelItems.csv");
+        }
 
         view.getFrame().dispose();
     }
@@ -156,6 +181,7 @@ public class controllerCustomer {
 
     public void initView(){
         view.getTXTItemsAdded().setFont(new Font("New Times Roman", Font.BOLD, 20));
+        view.getLBLRunningTotal().setFont(new Font("New Times Roman", Font.BOLD, 20));
         view.getTXTItemsAdded().append("\n");
     }
 

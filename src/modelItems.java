@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class modelItems {
     private int itemID;
@@ -21,11 +22,23 @@ public class modelItems {
     }
     public void addStock(int quantity) { this.quantityStock += quantity; }
 
+    public void setModelCSV(String address)
+    {
+        try{
+            FileWriter writer = new FileWriter(address, true);
+            writer.write(itemID + "," +itemName +
+                    ","+itemPrice+","+quantityStock+"\n");
+            writer.close();
+        }
+        catch (Exception e){}
+
+    }
 
 
     public modelItems(){
 
     }
+
 
     public modelItems(int itemID, String itemName,
                       float itemPrice,
@@ -48,7 +61,7 @@ public class modelItems {
         try (BufferedReader br = new BufferedReader(new FileReader(address))) {
             String row;
             BufferedReader csvReader = new BufferedReader(new FileReader(address));
-            csvReader.readLine(); //skips headers (first line)
+            //csvReader.readLine(); //skips headers (first line)
             while ((row = csvReader.readLine()) != null) {
 
                 String[] data = row.split(",");

@@ -62,7 +62,7 @@ public class modelStaff {
         try (BufferedReader br = new BufferedReader(new FileReader(address))) {
             String row;
             BufferedReader csvReader = new BufferedReader(new FileReader(address));
-            csvReader.readLine(); //skips headers (first line)
+            //csvReader.readLine(); //skips headers (first line)
             while ((row = csvReader.readLine()) != null) {
 
                 String[] data = row.split(",");

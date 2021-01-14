@@ -34,8 +34,7 @@ public class controllerHome {
             while (reader.readLine() != null) linesNumber++;
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        linesNumber -=1; //-1 to remove header
+        } //-1 to remove header
         modelStaff[] staffModel = new modelStaff[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
@@ -64,7 +63,6 @@ public class controllerHome {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        linesNumber -=1; //-1 to remove header
         modelItems[] itemsModel = new modelItems[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
@@ -79,7 +77,6 @@ public class controllerHome {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        linesNumber -=1; //-1 to remove header
         modelReceipt[] receiptModel = new modelReceipt[linesNumber];
         for (int i = 0; i <= linesNumber - 1; i++)
         {
